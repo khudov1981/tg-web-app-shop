@@ -16,7 +16,7 @@ export const  App = () => {
   return (
     <>
       <div>
-        НОвый проект
+        Всем Привет
         <button onClick={onClose}>Закрыть</button>
       </div>
     </>

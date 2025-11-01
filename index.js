@@ -1,7 +1,7 @@
 import TelegramBot from "node-telegram-bot-api";
 
 const token = "8178730840:AAHCtYRb_aXdcMDBksPBPVSNJLxRfTKMan0";
-const webAppUrl = "https://bitbits.net/";
+const webAppUrl = "https://helpful-crumble-b3172c.netlify.app/";
 
 const bot = new TelegramBot(token, { polling: true });
 
