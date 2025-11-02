@@ -25,4 +25,20 @@ bot.on("message", async (msg) => {
       },
     });
   }
+
+  if (msg?.web_app_data) {
+    try {
+      const data = JSON.parse(msg?.web_app_data?.data);
+
+      await bot.sendMessage(chatId, "Спасибо за обратную связь!");
+      await bot.sendMessage(chatId, "Ваша страна" + data.country);
+      await bot.sendMessage(chatId, "Ваша улица" + data.street);
+
+      setTimeout(async () => {
+        await bot.sendMessage(chatId, "Всю информацию вы получите в этом чате");
+      }, 3000);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 });
