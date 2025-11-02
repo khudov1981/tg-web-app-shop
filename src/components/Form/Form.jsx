@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import './form.css'
 import { useTelegram } from '../hooks/useTelegram'
@@ -6,13 +7,13 @@ export const Form = () => {
     const [country, setCountry] = useState('')
     const [street, setStreet] = useState('')
     const [subject, setSubject] = useState('physical')
-    const {tg} = useTelegram
+    const {tg} = useTelegram()
 
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Отправить данные'
         })
-    }, [tg.MainButton])
+    }, [])
 
     useEffect(() => {
         if(!street || !country) {
@@ -20,7 +21,7 @@ export const Form = () => {
         } else {
             tg.MainButton.show()
         }
-    }, [country, street, tg.MainButton])
+    }, [country, street])
 
     const onChangeCountry = (e) => {
         setCountry(e.target.value)
