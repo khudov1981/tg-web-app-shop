@@ -1,4 +1,4 @@
-import { Button } from '../button/button'
+import { Button } from '../Button/Button'
 import { useTelegram } from '../hooks/useTelegram'
 import './header.css'
 
