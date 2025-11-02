@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './App.css'
-import { Header } from './components/Header/Header'
+
 import { useTelegram } from './components/hooks/useTelegram'
 
 
@@ -20,7 +20,7 @@ export const  App = () => {
   return (
     <>
       <div>
-        <Header/>
+        
         <button onClick={onToggleButton}>toggle</button>
       </div>
     </>
