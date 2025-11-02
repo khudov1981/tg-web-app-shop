@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import './App.css'
+
 import { Header } from './components/Header/Header'
 import { useTelegram } from './components/hooks/useTelegram'
-
+import './App.css'
 
 export const  App = () => {
 
