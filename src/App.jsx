@@ -23,8 +23,8 @@ export const  App = () => {
         
         < Routes>
           <Route index element={< ProductList />}/>
-          <Route path={'form'} element={< Form />} />
-          <Route path={'product'} element={< ProductList />} />
+          <Route path={'/form'} element={< Form />} />
+          <Route path={'/product'} element={< ProductList />} />
         </Routes>
       </div>
     </>
