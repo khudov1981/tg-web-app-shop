@@ -1,8 +1,8 @@
 .product {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  padding: 1px;
+  border: 1px solid var(--tg-theme-button-color);
+  padding: 15px;
   width: 170px;
 }
 
