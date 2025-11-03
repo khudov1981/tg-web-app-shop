@@ -1,7 +1,7 @@
 import TelegramBot from "node-telegram-bot-api";
 
 const token = "8178730840:AAHCtYRb_aXdcMDBksPBPVSNJLxRfTKMan0";
-const webAppUrl = "https://bitbits.net/";
+const webAppUrl = "https://khudov1981-tg-web-app-shop-295c.twc1.net/";
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -13,7 +13,7 @@ bot.on("message", async (msg) => {
     await bot.sendMessage(chatId, "Ниже появится кнопка заполни форму", {
       reply_markup: {
         keyboard: [
-          [{ text: "Заполнить форму", web_app: { url: webAppUrl + "form" } }],
+          [{ text: "Заполнить форму", web_app: { url: webAppUrl + "/form" } }],
         ],
       },
     });
