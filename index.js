@@ -1,9 +1,15 @@
 import TelegramBot from "node-telegram-bot-api";
+import express from "express";
+import cors from "cors";
 
 const token = "8178730840:AAHCtYRb_aXdcMDBksPBPVSNJLxRfTKMan0";
-const webAppUrl = "https://khudov1981-tg-web-app-shop-295c.twc1.net/product";
+const webAppUrl = "https://khudov1981-tg-web-app-shop-295c.twc1.net";
 
 const bot = new TelegramBot(token, { polling: true });
+const app = express();
+
+app.use(express.json());
+app.use(cors());
 
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
@@ -12,7 +18,9 @@ bot.on("message", async (msg) => {
   if (text === "/start") {
     await bot.sendMessage(chatId, "Ниже появится кнопка заполни форму", {
       reply_markup: {
-        keyboard: [[{ text: "Заполнить форму", web_app: { url: webAppUrl } }]],
+        keyboard: [
+          [{ text: "Заполнить форму", web_app: { url: webAppUrl + "/form" } }],
+        ],
       },
     });
     await bot.sendMessage(chatId, "Ниже появится кнопка сделать заказ", {
@@ -41,3 +49,31 @@ bot.on("message", async (msg) => {
     }
   }
 });
+
+app.post("/web-data", async (req, res) => {
+  const { queryId, products, totalPrice } = req.body;
+
+  try {
+    await bot.answerWebAppQuery(queryId, {
+      type: "article",
+      id: queryId,
+      title: "Успешная покупка",
+      input_message_content: {
+        message_text: "Поздравляем с покупкой, вы преобрели товар" + totalPrice,
+      },
+    });
+    return res.status(500).json({});
+  } catch (e) {
+    await bot.answerWebAppQuery(queryId, {
+      type: "article",
+      id: queryId,
+      title: "Не удалось приобрести товар",
+      input_message_content: { message_text: "Не удалось приобрести товар" },
+    });
+  }
+  return res.status(200).json({});
+});
+
+const PORT = 8000;
+
+app.listen(PORT, () => "server started on Port" + PORT);
