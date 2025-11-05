@@ -31,7 +31,7 @@ export const ProductList = () => {
                 queryId, 
             }
             fetch('http://77.244.221.82:8000/web-data' , {
-                method: 'Post',
+                method: 'POST',
                 header: {
                     'Content-Type': 'application/json'
                 },
